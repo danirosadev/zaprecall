@@ -1,46 +1,51 @@
 import deck from "../../DeckPerguntas"
 import { useState } from "react"
 import CardPergunta from "../Card/CardPergunta"
-
-let cartas = deck.map((value) => ({
-    ...value,
-    taClicada: false,
-}))
+import Rodape from "../Rodape/Rodape"
+import GameContainer from "./style"
 
 export default function Jogo({zapRecall}) {
-    const [cartasClicadas, setCartasClicadas] = useState(cartas)
+    const [opened, setOpened] = useState(null)
+    const [answered, setAnswered] = useState([])
 
-    function foiClicada(indexDaCartaClicada) {
-        const novasCartas = cartasClicadas.map((c, index) => {
-            if (index === indexDaCartaClicada){
-                return ({
-                    ...c,
-                    taClicada: true,
-                })
-            }
-            return ({
-                ...c,
-                taClicada: false,
-            })
-        })
-        setCartasClicadas([...novasCartas])
+    function answerQuestion(status){
+        if (opened !== null){
+            const newArray = [...answered, {index: opened, status: status}]
+            setAnswered(newArray)
+            setOpened(null)
+        }
+        console.log(status)
+    }
+    console.log(answered)
+
+    function getStatus(i){
+        const card = answered.find((a) => a.index === i)
+        if (card !== null && card !== undefined){
+            return card.status
+        } else {
+            return "no status"
+        }
     }
 
     return (
-        <>
-            {cartasClicadas.map((carta, index) =>
+        <GameContainer>
+            {deck.map((c, i) =>
 
                <CardPergunta 
-               key={index}
-               index={index}
-               foiClicada={foiClicada}
-               taClicada={carta.taClicada}
-               pergunta={carta.pergunta}
-               resposta={carta.resposta}
-               zapRecall={zapRecall}
-               cartasClicadas={cartasClicadas}
+               key={i}
+               number={i +1}
+               question={c.question}
+               answer={c.answer}
+               openCard={() => setOpened(i)}
+               isOpened={i === opened}
+               answerQuestion={answerQuestion}
+               status = {getStatus(i)}
                />
             )}
-        </>
+
+            <Rodape 
+            answered={answered}
+            />
+        </GameContainer>
     )
 }

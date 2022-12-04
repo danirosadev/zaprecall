@@ -6,6 +6,7 @@ const ContainerRodape = styled.div`
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;

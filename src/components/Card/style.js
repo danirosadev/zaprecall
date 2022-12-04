@@ -71,7 +71,7 @@ const Botao = styled.button`
   color: #FFFFFF;
   border-radius: 5px;
   padding:5px;
-  background:${props => props.cor} ;
+  background:${props => props.color} ;
   border: none;
   cursor: pointer;
 `

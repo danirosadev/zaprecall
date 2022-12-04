@@ -1,12 +1,12 @@
 const DeckPerguntas = [
-    {id: 1, pergunta: "O que é JSX?", resposta: "Uma extensão de linguagem do JavaScript"},
-    {id: 2, pergunta: "O React é __", resporta: "uma biblioteca JavaScript para construção de interfaces"},
-    {id: 3, pergunta: "Componentes devem iniciar com __", resposta: "letra maiúscula"},
-    {id: 4, pergunta: "Podemos colocar __ dentro do JSX", resposta: "expressões"},
-    {id: 5, pergunta: "O ReactDOM nos ajuda __", resposta: "interagindo com a DOM para colocar componentes React na mesma"},
-    {id: 6, pergunta: "Usamos o npm para __", resposta: "gerenciar os pacotes necessários e suas dependências"},
-    {id: 7, pergunta: "Usamos props para __", resposta: "passar diferentes informações para componentes"},
-    {id: 8, pergunta: "Usamos estado (state) para __", resposta: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
+    {question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript"},
+    {question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces"},
+    {question: "Componentes devem iniciar com __", answer: "letra maiúscula"},
+    {question: "Podemos colocar __ dentro do JSX", answer: "expressões"},
+    {question: "O ReactDOM nos ajuda __", answer: "interagindo com a DOM para colocar componentes React na mesma"},
+    {question: "Usamos o npm para __", answer: "gerenciar os pacotes necessários e suas dependências"},
+    {question: "Usamos props para __", answer: "passar diferentes informações para componentes"},
+    {question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
 ]
 
 

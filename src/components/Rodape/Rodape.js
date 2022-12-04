@@ -1,9 +1,10 @@
 import ContainerRodape from "./style"
+import deck from "../../DeckPerguntas"
 
-export default function Rodape({respostas}) {
+export default function Rodape({answered}) {
     return (
         <ContainerRodape data-test="footer">
-            <div> 1/4 Concluídos</div>
+            <div> {answered.length}/{deck.length} Concluídos</div>
         </ContainerRodape>
     )
 }
