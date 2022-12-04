@@ -11,17 +11,20 @@ const PerguntaFechada = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  p {
-  font-family: 'Recursive';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  color: #333333;
-}
+
   img{
     cursor: pointer;
   }
+`
+
+const QIndex = styled.p`
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: ${props => props.color};
+    text-decoration: ${props => props.status === "no status" ? "none" : "line-through"};
 `
 
 const PerguntaAberta = styled.div`
@@ -75,4 +78,4 @@ const Botao = styled.button`
   border: none;
   cursor: pointer;
 `
-export {PerguntaAberta, PerguntaFechada, ContainerBotoes, Botao};
+export { PerguntaAberta, PerguntaFechada, ContainerBotoes, Botao, QIndex };

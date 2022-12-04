@@ -1,7 +1,10 @@
 import setaVirar from "../../img/seta_virar.png"
 import setaPlay from "../../img/seta_play.png"
+import zapIcon from "../../img/icone_certo.png"
+import almostIcon from "../../img/icone_quase.png"
+import errorIcon from "../../img/icone_erro.png"
 import { useState } from "react"
-import { PerguntaAberta, PerguntaFechada, ContainerBotoes, Botao } from "./style"
+import { PerguntaAberta, PerguntaFechada, ContainerBotoes, Botao, QIndex } from "./style"
 
 function CardAberto({ question, answer, answerQuestion }) {
     const [turned, setTurned] = useState(true)
@@ -23,21 +26,69 @@ function CardAberto({ question, answer, answerQuestion }) {
 
 }
 
-function CardFechado({ index, number, openCard }) {
+function CardFechado({ index, number, open, status }) {
+
+    function changeColor(){
+        switch(status){
+            case "error":
+                return "#FF3030"
+            case "almost":
+                return "#FF922E"
+            case "zap":
+                return "#2FBE34"
+            default: 
+            return "#333333"
+        }
+    }
+
+    function changeIcon(){
+        switch(status){
+            case "error":
+                return errorIcon
+            case "almost":
+                return almostIcon
+            case "zap":
+                return zapIcon
+            default: 
+            return setaPlay
+        }
+    }
+
+    function changeTest(){
+        switch(status){
+            case "error":
+                return "no-icon"
+            case "almost":
+                return "partial-icon"
+            case "zap":
+                return "zap-icon"
+            default: 
+            return "play-btn"
+        }
+    }  
+
     return (
         <PerguntaFechada data-test="flashcard" key={index}>
-            <p data-test="flashcard-text">{`Pergunta ${number}`}</p>
-            <img data-test="play-btn" onClick={openCard} src={setaPlay} alt="play" />
+            <QIndex data-test="flashcard-text" status={status} color={changeColor()}>{`Pergunta ${number}`}</QIndex>
+            <img data-test={changeTest()} onClick={open} src={changeIcon()} alt="play" />
         </PerguntaFechada>
     )
 }
 
 export default function CardPergunta({ number, question, answer, isOpened, openCard, answerQuestion, status }) {
-console.log(status)
+
+    function open(){
+        if(status === "no status"){
+            openCard()
+        }
+    }
+
+
+
     return (
         <>
             {!isOpened ? (
-                <CardFechado number={number} openCard={openCard} />
+                <CardFechado number={number} open={open} status={status}/>
             ) : (
                 <CardAberto question={question} answer={answer} answerQuestion={answerQuestion} />
             )

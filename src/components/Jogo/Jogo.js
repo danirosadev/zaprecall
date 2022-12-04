@@ -14,9 +14,7 @@ export default function Jogo({zapRecall}) {
             setAnswered(newArray)
             setOpened(null)
         }
-        console.log(status)
     }
-    console.log(answered)
 
     function getStatus(i){
         const card = answered.find((a) => a.index === i)
