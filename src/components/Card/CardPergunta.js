@@ -10,7 +10,7 @@ function CardAberto({ question, answer, answerQuestion }) {
     const [turned, setTurned] = useState(true)
 
     return (
-        <PerguntaAberta>
+        <PerguntaAberta data-test="flashcard">
             <p data-test="flashcard-text">{turned ? question : answer}</p>
             {turned ? (
                 <img data-test="turn-btn" onClick={() => setTurned(!turned)} src={setaVirar} alt="seta virar" />
@@ -70,7 +70,7 @@ function CardFechado({ index, number, open, status }) {
     return (
         <PerguntaFechada data-test="flashcard" key={index}>
             <QIndex data-test="flashcard-text" status={status} color={changeColor()}>{`Pergunta ${number}`}</QIndex>
-            <img data-test={changeTest()} onClick={open} src={changeIcon()} alt="play" />
+            <img data-test={changeTest()} onClick={open} src={changeIcon()} alt="icone" />
         </PerguntaFechada>
     )
 }
